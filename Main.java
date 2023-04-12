@@ -16,7 +16,7 @@ class Main {
 
     System.out.println("0  -  wyjdź");
     System.out.println("1  -  dodaj studenta");
-    System.out.println("2  -  ");
+    System.out.println("2  -  wypisz studentów");
 
     int choice = scanner.nextInt();
     boolean isCon = true;
@@ -41,7 +41,15 @@ class Main {
           }
         }
         case 2 -> {
-          System.out.println("Opcja 2");
+          try {
+            Service service = new Service();
+            var students = service.getStudents();
+            for(Student current : students) {
+              System.out.println(current.ToString());
+          }
+        } catch (IOException e) {
+    
+        }
         }
         default -> {
           break;
