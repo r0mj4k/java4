@@ -29,10 +29,14 @@ class Main {
           
           System.out.println("Podaj imie: ");
           String name = scanner.next();
+          
+          System.out.println("Podaj nazwisko: ");
+          String sername = scanner.next();
+          
           System.out.println("Podaj wiek: ");
           int age = scanner.nextInt();
 
-          Student student = new Student(name, age);
+          Student student = new Student(name,sername,age);
           Service service = new Service();
           try {
           service.addStudent(student);
