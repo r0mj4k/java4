@@ -19,6 +19,7 @@ class Main {
       System.out.println("0  -  wyjdź");
       System.out.println("1  -  dodaj studenta");
       System.out.println("2  -  wypisz studentów");
+      System.out.println("3  -  znajdź studenta po imieniu");
 
       int choice = scanner.nextInt();
    
@@ -37,11 +38,13 @@ class Main {
             System.out.println("Podaj wiek: ");
             int age = scanner.nextInt();
   
-            
             System.out.println("Podaj ulice: ");
             String street = scanner.next();
   
-            Student student = new Student(name,sername,age,street);
+            System.out.println("Podaj datę urodzenia (DD-MM-RRRR): ");
+            String birth = scanner.next();
+  
+            Student student = new Student(name,sername,age,street,birth);
             Service service = new Service();
             try {
             service.addStudent(student);
@@ -59,6 +62,9 @@ class Main {
           } catch (IOException e) {
               
           }
+            System.out.println();
+          }
+          case 3 -> {
             System.out.println();
           }
           default -> {
