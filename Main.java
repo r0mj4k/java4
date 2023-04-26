@@ -65,7 +65,15 @@ class Main {
             System.out.println();
           }
           case 3 -> {
-            System.out.println();
+            System.out.println("Podaj imie: ");
+            String name = scanner.next();
+            try {
+            Service serv = new Service();
+            var students = serv.findStudentByName(name);
+             for (Student stud : students) {
+                System.out.println(stud.toString());
+             } 
+            } catch (IOException e) {};
           }
           default -> {
             System.out.println("Wybierz poprawną opcję!");

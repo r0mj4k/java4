@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 public class Service {
 
   public void addStudent(Student student) throws IOException {
@@ -30,8 +31,14 @@ public class Service {
     return ret;
   }
 
-  public Student findStudentByName(String name) {
-    
+  public Collection<Student> findStudentByName(String name) throws IOException {
+    var students = this.getStudents();
+    var studs = new ArrayList<Student>();
+    for (Student stud : students) {
+        if(stud.GetName().equals(name))
+          studs.add(stud);
+      return studs;
+    }
     return null;
   }
 }
