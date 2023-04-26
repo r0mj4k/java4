@@ -9,56 +9,62 @@ Kod bazowy programu Commit4_0:
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 class Main {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
+    boolean isContinued = true;
+    while(isContinued) {
+      System.out.println("0  -  wyjdź");
+      System.out.println("1  -  dodaj studenta");
+      System.out.println("2  -  wypisz studentów");
 
-    System.out.println("0  -  wyjdź");
-    System.out.println("1  -  dodaj studenta");
-    System.out.println("2  -  wypisz studentów");
-
-    int choice = scanner.nextInt();
-    boolean isCon = true;
-
-      switch(choice){
-        case 0 -> {
-          break;
-        }
-        case 1 -> {
-          
-          System.out.println("Podaj imie: ");
-          String name = scanner.next();
-          
-          System.out.println("Podaj nazwisko: ");
-          String sername = scanner.next();
-          
-          System.out.println("Podaj wiek: ");
-          int age = scanner.nextInt();
-
-          Student student = new Student(name,sername,age);
-          Service service = new Service();
-          try {
-          service.addStudent(student);
-          } catch (IOException e) {
+      int choice = scanner.nextInt();
+   
+        switch(choice){
+          case 0 -> {
+            isContinued = false;
+          }
+          case 1 -> {
             
-          }
-        }
-        case 2 -> {
-          try {
+            System.out.println("Podaj imie: ");
+            String name = scanner.next();
+            
+            System.out.println("Podaj nazwisko: ");
+            String sername = scanner.next();
+            
+            System.out.println("Podaj wiek: ");
+            int age = scanner.nextInt();
+  
+            
+            System.out.println("Podaj ulice: ");
+            String street = scanner.next();
+  
+            Student student = new Student(name,sername,age,street);
             Service service = new Service();
-            var students = service.getStudents();
-            for(Student current : students) {
-              System.out.println(current.ToString());
+            try {
+            service.addStudent(student);
+            } catch (IOException e) {
+              
+            }
           }
-        } catch (IOException e) {
-    
-        }
-        }
-        default -> {
-          break;
+          case 2 -> {
+            try {
+              Service service = new Service();
+              var students = service.getStudents();
+              for(Student current : students) {
+                System.out.println(current.ToString());
+            }
+          } catch (IOException e) {
+              
+          }
+            System.out.println();
+          }
+          default -> {
+            System.out.println("Wybierz poprawną opcję!");
+          }
         }
       }
-    
   }
 }
