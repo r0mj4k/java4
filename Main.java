@@ -71,7 +71,7 @@ class Main {
             Service serv = new Service();
             var students = serv.findStudentByName(name);
              for (Student stud : students) {
-                System.out.println(stud.toString());
+                System.out.println(stud.ToString());
              } 
             } catch (IOException e) {};
           }
