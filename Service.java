@@ -34,11 +34,10 @@ public class Service {
   public Collection<Student> findStudentByName(String name) throws IOException {
     var students = this.getStudents();
     var studs = new ArrayList<Student>();
-    for (Student stud : students) {
+    for (Student stud : students) 
         if(stud.GetName().equals(name))
           studs.add(stud);
+    
       return studs;
-    }
-    return null;
   }
 }
